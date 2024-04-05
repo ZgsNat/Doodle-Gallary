@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="https://img.freepik.com/free-vector/abstract-scribble-icons-hand-drawn-doodle-coloring_179234-222.jpg" alt="Logo" class="logo">
+            <span class="brand-name">VIETDOODLE GALLERY</span>
+        </div>
+        <div class="navbar-right">
+            <a href="#" class="back-button">&#11122;</a>
+        </div>
+    </nav>
+    <div>
+        <div class="logo-container">
+            <img src="https://www.google.com/logos/doodles/2023/vietnam-national-day-2023-6753651837110080.2-2x.png" alt="Big Logo" class="big-logo">
+        </div>
+        <div class="slider-container">
+            <label class="slider-button">-</label>
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+            <label class="slider-button">+</label>
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="showContent('content1')" id="button1">Doodles</button>
+            <button class="button" onclick="showContent('content2')" id="button2">More Doodles</button>
+        </div>
+        <div class="search">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+        </div>
+        <div class="content_container_1" id="content1">
+            <div class="upcoming-events">
+                <h2>Upcoming Events</h2>
+                <div class="grid-container">
+                    <div class="frame"></div>
+                    <div class="frame"></div>
+                    <div class="frame"></div>
+                </div>
+            </div>
+            <div class="special-theme">
+                <h2>Special Theme</h2>
+                <div class="grid-container">
+                    <div class="frame"></div>
+                    <div class="frame"></div>
+                    <div class="frame"></div>
+                    <div class="frame"></div>
+                    <div class="frame"></div>
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content_container_2" id="content2">
+            <div class="upload-events">
+                <h2>Upload Your Doodle</h2>
+                <div class="grid-container2">
+                    <div class="frame2"></div>
+                </div>
+            </div>
+            <div class="upload-events">
+                <h2>Explore On Store</h2>
+                <div class="grid-container2">
+                    <div class="frame2"></div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <button class="save-button">Save</button>
+            <button class="discard-button">Discard</button>
+        </footer>
+    </div>
+    <script>
+        function selectFirstButton() {
+        var firstButton = document.querySelector('#button1');
+        if (firstButton) {
+            changeColor(firstButton);
+        }
+    }
+        function changeColor(button) {
+        var buttons = document.querySelectorAll('.button');
+        buttons.forEach(function(btn) {
+            btn.style.backgroundColor = 'transparent';
+            if (btn === button) {
+                btn.style.color = '#000'; // Màu chữ trắng cho nút được chọn
+            } else {
+                btn.style.color = '#fff'; // Màu chữ đen cho các nút còn lại
+            }
+        });
+        button.style.backgroundColor = '#ecb1b1'; // Chọn màu đỏ cho nút được chọn
+    }
+    showContent("content1");
+
+    function showContent(contentId) {
+    var content1 = document.getElementById('content1');
+    var content2 = document.getElementById('content2');
+    var button1 = document.getElementById('button1');
+    var button2 = document.getElementById('button2');
+
+    if (contentId === 'content1') {
+        content1.style.visibility = 'visible';
+        content2.style.visibility = 'hidden';
+        content1.style.position = 'relative';
+        content2.style.position = 'absolute';
+        content2.style.top = '0';
+        button1.classList.add('active');
+        button2.classList.remove('active');
+        changeColor(button1);
+    } else if (contentId === 'content2') {
+        content1.style.visibility = 'hidden';
+        content2.style.visibility = 'visible';
+        content2.style.position = 'relative';
+        content1.style.position = 'absolute';
+        content1.style.top = '0';
+        button1.classList.remove('active');
+        button2.classList.add('active');
+        changeColor(button2);
+    }
+}
+    </script>
+</body>
+</html>
